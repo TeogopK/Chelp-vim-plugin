@@ -1,0 +1,12 @@
+:ChelpAddHidden	chelp.txt	/*:ChelpAddHidden*
+:ChelpShow	chelp.txt	/*:ChelpShow*
+chelp	chelp.txt	/*chelp*
+chelp-contents	chelp.txt	/*chelp-contents*
+chelp-installation	chelp.txt	/*chelp-installation*
+chelp-issues	chelp.txt	/*chelp-issues*
+chelp-mappings	chelp.txt	/*chelp-mappings*
+chelp-settings	chelp.txt	/*chelp-settings*
+chelp-usage	chelp.txt	/*chelp-usage*
+chelp.txt	chelp.txt	/*chelp.txt*
+g:chelp_first_header_only	chelp.txt	/*g:chelp_first_header_only*
+g:chelp_save_cursor	chelp.txt	/*g:chelp_save_cursor*

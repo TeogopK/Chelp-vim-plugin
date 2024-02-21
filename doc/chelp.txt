@@ -1,0 +1,144 @@
+*chelp.txt*	Lookup C-man pages efficiently
+
+==============================================================================
+CONTENTS                                        *chelp*   *chelp-contents*
+
+    Installation................................: |chelp-installation|
+    Usage.......................................: |chelp-usage|
+    Settings....................................: |chelp-settings|
+    Mappings....................................: |chelp-mappings|
+    Issues......................................: |chelp-issues|
+
+
+==============================================================================
+INSTALLATION                                            *chelp-installation*
+
+The easiest way to install the plugin is with a plugin manager:
+
+- vim-plug: https://github.com/junegunn/vim-plug
+- Vundle:   https://github.com/VundleVim/Vundle.vim
+
+If you use one, just follow the instructions in its documentation.
+
+You can install the plugin yourself using Vim's |packages| functionality by
+cloning the project (or adding it as a submodule) under
+`~/.vim/pack/<any-name>/start/`. For example:
+>
+    mkdir -p ~/.vim/pack/_/start
+    cd ~/.vim/pack/_/start
+    git clone https://github.com/TeogopK/Chelp-vim-plugin.git
+
+    # to generate documentation tags:
+    vim -u NONE -c "helptags chelp.vim/doc" -c q
+<
+This should automatically load the plugin for you when Vim starts.
+Alternatively, you can add it to `~/.vim/pack/<any-name>/opt/` instead and
+load it in your |.vimrc| manually with:
+>
+    packadd chelp
+<
+If you'd rather not use git, you can download the files as zip and 
+unzip them in the relevant directory.
+
+==============================================================================
+USAGE                               *chelp-usage* *:ChelpShow* *:ChelpAddHidden*
+
+Chelp allows the user to write C-code more efficiently!
+
+The plugin has two main functionalities:
+
+	1. |:ChelpShow| allows the user to load the man page of a specified word
+in a split screen using vim, and not a man pager. This allows moving using
+custom mappings, copying text with |yy|, typing in the buffer and much more.
+
+	The word can be specified as parameter to the function:
+>
+	:ChelpShow wait 
+<
+	or the keyword under the cursor if no parameter is given (see
+|iskeyword|).
+	
+
+	The man section can be specified as follows: 
+>
+	:2ChelpShow open 
+	:ChelpShow 2 open 
+<
+
+	2. |:ChelpAddHidden| allows the user to insert all the headers
+given in the man page of a specified word (function). All headers that are
+already added will be ignored. Headers outside of the SYNOPSIS menu in the man
+page will also be added. 
+
+	Again the word can be specified or expanded from under the cursor:
+>
+	:ChelpAddHidden wait
+<
+
+	Sections can also be included:
+>
+	:2ChelpAddHidden open 
+	:ChelpAddHidden 2 open 
+<
+==============================================================================
+SETTINGS       *chelp-settings*  *g:chelp_first_header_only*  *g:chelp_save_cursor*
+
+There are currently two options:
+
+        1. |g:chelp_first_header_only| allows the user to paste only the first
+header in the man page. Default value is 0, meaning that all headers
+will be pasted. Setting can be changed with:
+>
+        :let g:chelp_first_header_only=1
+<
+
+        2. |g:chelp_save_cursor| allows the user to save his cursor position
+and return to it after the paste as if nothing has happened, only the needed 
+headers have been added. Default value is 1, meaning that the cursor position 
+will be saved. If set to 0, the cursor position will be in the beginning of
+the file, after the last inserted header:
+>
+        :let g:chelp_save_cursor=0
+<
+
+The two options can be set in the |.vimrc| file so they are permanent in the
+|.vimrc| paste with the desired value 0/1:
+>
+        let g:chelp_first_header_only=1
+        let g:chelp_save_cursor=0
+<
+==============================================================================
+MAPPINGS                                                    *chelp-mappings*
+
+Mappings can be created as shown below:
+>
+        nmap <some_keys> <Plug>(ChelpShow)
+        nmap <some_keys> <Plug>(ChelpAddHidden)
+<
+
+Recommended mappings (can be copy-pasted in the |.vimrc| and will work):
+>
+        nmap zh <Plug>(ChelpShow) 
+        nmap zp <Plug>(ChelpAddHidden) 
+<
+
+Specifying the man section with mappings can be done as follows:
+
+	Positioning the cursor anywhere on the wanted word (function) and
+	pressing <number_of_section><some_keys>.
+
+	With the recommended mappings this will look like:
+>
+	2zh
+<
+			
+Note that the mapping is |nmap| and not |nnoremap|.
+
+==============================================================================
+ISSUES                                                        *chelp-issues*
+
+Any issues and suggestions are very welcome on teodor.sv.kostadinov@gmail.com
+
+
+
+vim:tw=78:sw=4:ft=help:norl:
