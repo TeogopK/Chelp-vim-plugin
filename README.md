@@ -6,6 +6,8 @@ The plugin was developed to streamline the process of accessing *man pages* for 
 
 ## Usage
 
+[demo_keys.webm](https://github.com/TeogopK/chelp.vim/assets/94198193/2a0822c1-24a7-42bb-9014-845cb55d3943)
+
 The plugin has two main functionalities:
 
 ### ChelpShow
