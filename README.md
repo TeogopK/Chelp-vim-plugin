@@ -118,7 +118,7 @@ To sum up, an example `.vimrc` file with specified ***Chelp plugin*** mappings a
 source $VIMRUNTIME/defaults.vim
 
 nmap zh <Plug>(ChelpShow)
-nmap zp <Plug>(ChelpAndHidden)
+nmap zp <Plug>(ChelpAddHidden)
 
 set clipboard=unnamed,unnamedplus
 
