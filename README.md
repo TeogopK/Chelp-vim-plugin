@@ -2,13 +2,13 @@
 
 This plugin provides easy *man page* lookup in *Vim split screen* and automatic *C-headers* insertion.
 
-The plugin was developed to streamline the process of accessing *man pages* for the *Operating Systems course* at *FMI*, making it more efficient and convenient.
+It was developed to streamline the process of accessing *man pages* for the *Operating Systems course* at *FMI*, making it more efficient and convenient.
 
 ## Usage
 
-[demo_keys.webm](https://github.com/TeogopK/chelp.vim/assets/94198193/2a0822c1-24a7-42bb-9014-845cb55d3943)
-
 The plugin has two main functionalities:
+
+[demo_keys.webm](https://github.com/TeogopK/chelp.vim/assets/94198193/2a0822c1-24a7-42bb-9014-845cb55d3943)
 
 ### ChelpShow
 
