@@ -25,18 +25,24 @@ function! s:getManPageAsString(count, word)
 
 	let script = s:getManScript(a:count, a:word)
 
-	return system(script)
+	let script_result = system(script .. ' 2>/dev/null')
+	let script_errors = system(script .. ' 1>/dev/null')
+
+	return [script_result, script_errors]
 endfunction
 
 function! chelp#ChelpShow(count, word)
-	let manpage = s:getManPageAsString(a:count, a:word)
+	let result = s:getManPageAsString(a:count, a:word)
+
+	let result_manpage = result[0]
+	let errors_manpage = result[1]
 
 	if v:shell_error != 0
-		echomsg "Error: " trim(manpage)
+		echomsg "Error: " trim(errors_manpage)
 		return
 	endif
 
-	new | set buftype=nofile filetype=man | call setline(1, split(manpage, '\n'))
+	new | set buftype=nofile filetype=man | call setline(1, split(result_manpage, '\n'))
 endfunction
 
 function! s:getHeadersToAdd(regex, text)
