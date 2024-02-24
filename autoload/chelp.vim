@@ -87,7 +87,7 @@ function! s:addHeaders()
 	endfor	
 
 	if count_added == 0
-		echomsg "All header are already added"
+		echomsg "All headers are already added"
 	endif
 
 
@@ -99,18 +99,21 @@ function! s:addHeaders()
 endfunction
 
 function! chelp#AddHeadersHidden(count, word)
-	let manpage = s:getManPageAsString(a:count, a:word)
+	let result = s:getManPageAsString(a:count, a:word)
+
+	let result_manpage = result[0]
+	let errors_manpage = result[1]
 
 	if v:shell_error != 0
-		echomsg "Error: " trim(manpage)
+		echomsg "Error: " trim(errors_manpage)
 		return
 	endif
 
-	call s:getHeadersToAdd('#include\s*[<"].\{-}[>"]', manpage)
+	call s:getHeadersToAdd('#include\s*[<"].\{-}[>"]', result_manpage)
 
 	if empty(g:chelp_headers_to_add)
 
-		echomsg("Error: No headers found!")
+		echomsg("Error: No headers found")
 		return
 	endif
 
