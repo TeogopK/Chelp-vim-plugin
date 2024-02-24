@@ -8,10 +8,12 @@ function! s:getManScript(count, word)
 		let word = expand('<cword>')
 	endif
 
-	let script = "man "
+	let terminal_width = &columns - 2
+
+	let script = 'MANWIDTH=' .. terminal_width .. ' man '
 
 	if number > 0 && number < 10
-		let script = script .. number .. " "
+		let script = script .. number .. ' '
 	endif
 
 	let script = script .. shellescape(word)
